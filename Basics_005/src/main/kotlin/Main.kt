@@ -1,13 +1,15 @@
-fun minValue(nums: Array<Int>):Int{
-    var minVal = 5001
-    for(n in nums){
-        if(n < minVal){
-            minVal = n
+fun isMonotonic(nums:Array<Int>):Boolean{
+    if (nums[0] > nums[1]){
+        nums.reverse()
+    }
+
+    for (i in 0 until nums.size-1){
+        if (!(nums[i] > nums[i+1])){
+            return false
         }
     }
-    return minVal
+    return true
 }
 fun main(args: Array<String>) {
-    val nums = arrayOf(3, 4, 5, 1, 2)
-    println(minValue(nums))
+    println( isMonotonic(arrayOf(1,3,2)))
 }
