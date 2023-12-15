@@ -48,6 +48,7 @@ fun main(args: Array<String>) {
     // SETS and MAPS
 
     val numbers:MutableSet<Int> = mutableSetOf(1,1,2,3,4,4)
+
     numbers.forEach{nums->
       //  println(nums)
     }
@@ -65,5 +66,18 @@ fun main(args: Array<String>) {
     c[0] = 1
 
     //c.forEach { i, v -> println(i) }
+
+
+    val ls = sequenceOf("Java","C++","Kotlin").filter { it.length > 2 }.map { it }.forEach { println(it) }
+
+
+    //COMMAND LINE ARGUEMENTS
+
+    print("what is your name? ")
+
+    // ?: Elvis operator means that we cannot pass an empty file which will be  discarded
+
+    val newName = readLine() ?: ""
+    println("The name is $newName")
 
 }
