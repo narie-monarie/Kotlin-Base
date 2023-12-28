@@ -32,3 +32,12 @@
         }
     }
     ```
+
+# JetPack Compose 
+
+- Android Activity
+- Theme
+- Composable
+- Modifier 
+- Composition
+- Mutable states & Remember

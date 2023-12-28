@@ -38,6 +38,7 @@ fun main(args: Array<String>) {
     val aChar:Char = 'a'
     val newLineChar:Char = '\n'
     val helloNew: String = "Hello World"
+
     val raw = """
         some
         multiline
