@@ -41,3 +41,66 @@
 - Modifier 
 - Composition
 - Mutable states & Remember
+
+
+- In compose an Activity is the entry point of an App(MainActivity).
+- SetContent - Used to define the Layout
+- Surface - Choose best color to child components
+- Modifier tells the UI elements how to lay out, display or behave within its parents layout
+
+
+## State in Compose
+
+```kt
+@Composable
+fun Greeting(name: String) {
+    var expanded = false // Don't do this!
+
+    Surface(
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
+    ) {
+        Row(modifier = Modifier.padding(24.dp)) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = "Hello, ")
+                Text(text = name)
+            }
+            ElevatedButton(
+                onClick = { expanded = !expanded }
+            ) {
+                Text(if (expanded) "Show less" else "Show more")
+            }
+        }
+    }
+}
+```
+
+- This won't work because every time Greeting is run, the default value is set to false because it is not tracked by Compose
+- Instead, do this
+
+```kt
+@Composable
+fun Greeting(name: String) {
+    var expanded by rememeber{mutableStateOf(false)} // do this!
+    //by saves us from writing .value everytime
+
+    Surface(
+        color = MaterialTheme.colorScheme.primary,
+        modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
+    ) {
+        Row(modifier = Modifier.padding(24.dp)) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(text = "Hello, ")
+                Text(text = name)
+            }
+            ElevatedButton(
+                onClick = { expanded = !expanded }
+            ) {
+                Text(if (expanded) "Show less" else "Show more")
+            }
+        }
+    }
+}
+```
+
+- state that is read or modified by multiple functions should live in a common ancestor—this process is called state hoisting
