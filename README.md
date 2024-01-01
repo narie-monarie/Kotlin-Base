@@ -104,3 +104,7 @@ fun Greeting(name: String) {
 ```
 
 - state that is read or modified by multiple functions should live in a common ancestor—this process is called state hoisting
+
+
+### Lazy Column
+- LazyColumn renders only the visible items on screen, allowing performance gains when rendering a big list.
